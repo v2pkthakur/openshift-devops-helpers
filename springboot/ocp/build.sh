@@ -4,10 +4,6 @@
 # Called from JIRA when a build is initiated
 ###################################################################
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd $DIR
-source ./common.sh
-source ./config
 
 USAGE="\
 Error: Wrong argument(s).
@@ -20,6 +16,11 @@ if [ ! "$1" ]; then
     echo "$USAGE"
     exit 1
 fi
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
+source ./common.sh
+source ./config
 
 APP=`echo $1 | cut -d_ -f1 | tr "[A-Z]" "[a-z]"`
 BUILD_PROJ=$APP-build
